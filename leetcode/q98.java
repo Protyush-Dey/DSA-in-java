@@ -15,6 +15,11 @@
  */
 class Solution {
     public boolean isValidBST(TreeNode root) {
-        
+        return cheak(root , Long.MAX_VALUE , Long.MIN_VALUE);
+    }
+    private boolean cheak(TreeNode root ,  long max, long min){
+        if(root==null) return true;
+        if(root.val <= min || root.val >= max) return false;
+        return cheak(root.left , root.val , min) && cheak(root.right , max , root.val);
     }
 }
